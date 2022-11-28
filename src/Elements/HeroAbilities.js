@@ -1,8 +1,11 @@
 import React from 'react';
 
-const HeroAbilities = () => {
+const HeroAbilities = ({Hero}) => {
+    console.log(Hero)
     return (
-        <div>HeroAbilities</div>
+        <div>
+            Strength: {Hero.Strength}
+        </div>
     )
 }
 

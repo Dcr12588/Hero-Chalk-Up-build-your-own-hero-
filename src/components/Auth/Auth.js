@@ -1,25 +1,46 @@
-import React, { useState } from 'react'
+import React, { useState,useContext } from 'react';
+import axios from 'axios';
+
+import AuthContext from '../../store/authContext'
 
 const Auth = () => {
 
     const [register,setRegister] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const authCtx = useContext(AuthContext)
+
+    const handleAuth = (e) => {
+        e.preventDefault()
+        const body = {username,password}
+        axios.post(`${register ? '/register' : '/login' }`, body)
+        .then(res => {
+            console.log (res.data)
+            console.log(authCtx)
+            const {token, exp, userId, username}=res.data
+            authCtx.login(token, exp, userId, username)
+        })
+        .catch(err => console.log(err))
+    }
+
     return (
         <div> 
             <h1> Welcome to Hero Chalk Up! {register ? 'Register' : "Login"}</h1>
             {register ? (
                 <div>
-                    <form>
+                    <form onSubmit={e => handleAuth(e)}>
                     <input placeholder='username' onChange = {e => setUsername(e.target.value)} value={username}/>
                     <input placeholder='password' onChange = {e => setPassword(e.target.value)} value={password}/>
+                    <button>Join the Heroes</button>
                 </form>
                 </div>
             ) : (
                 <div>
-                <form>
+                <form onSubmit={e => handleAuth(e)}>
                     <input placeholder='username' onChange = {e => setUsername(e.target.value)} value={username}/>
                     <input placeholder='password' onChange = {e => setPassword(e.target.value)} value={password}/>
+                    <button>Join the Heroes</button>
                 </form>
                 </div>
             )}
