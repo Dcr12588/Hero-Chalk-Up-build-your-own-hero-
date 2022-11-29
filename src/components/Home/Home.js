@@ -15,7 +15,7 @@ const Home = () => {
     return(
         <div>
             {heros.map(Hero => {
-                return <HeroAbilities key={Hero.heroId}
+                return <HeroAbilities key={Hero.id}
                 Hero={Hero}/>
             })}
         </div>

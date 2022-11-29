@@ -27,13 +27,13 @@ module.exports = {
         try {
             const { Strength, Speed, IQ,
                 Durability, Skill, Weapon,
-                PowerSupply, CombatAbility, SpecialAbility, heroId } = req.body
+                PowerSupply, CombatAbility, SpecialAbility} = req.body
 
             await Hero.update({
                 Strength, Speed, IQ,
                 Durability, Skill, Weapon,
                 PowerSupply, CombatAbility, SpecialAbility
-            }, { where: { id: +heroId } })
+            }, { where: { id: +User } })
 
             res.sendStatus(200)
 
@@ -44,11 +44,7 @@ module.exports = {
     },
     getAllHeros: async (req,res) => {
         try {
-           const heros = await Hero.findAll({include:[{
-            model: User,
-            required: true,
-            attributes: ['username']
-           }]}) 
+           const heros = await Hero.findAll()
            res.status(200).send(heros)
         } catch(err) {
             console.log(err)

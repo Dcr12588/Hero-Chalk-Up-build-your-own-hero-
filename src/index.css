@@ -18,12 +18,137 @@ code {
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
-  padding: 1rem;
   background-color: #bee3db ;
+  font-family: 'Amatic SC', cursive; 
 }
 
-.links {
+.homeBtn {
   display: flex;
-  justify-content: space-between 1rem;
-  color: darkgray;
+  color:#bee3db;
+  border: none;
+  border-radius:6px;
+  font-family: 'Amatic SC', cursive;
+  background-color: rgb(66, 66, 66);
+  justify-content: center;
+  margin-bottom: 2px;
+  font-size: x-large;
+}
+.loginBtn {
+  display: flex;
+  color:#bee3db;
+  border: none;
+  border-radius:6px;
+  font-family: 'Amatic SC', cursive;
+  background-color: rgb(66, 66, 66);
+  justify-content: center;
+  width: 100px;
+  margin-bottom: 2px;
+  font-size: larger;
+}
+.addHeroBtn {
+  display: flex;
+  color:#bee3db;
+  border: none;
+  border-radius:6px;
+  font-family: 'Amatic SC', cursive;
+  background-color: rgb(66, 66, 66);
+  justify-content: center;
+  margin-bottom: 2px;
+  font-size: x-large;
+}
+.myHeroBtn {
+  display: flex;
+  color:#bee3db;
+  border: none;
+  border-radius:6px;
+  font-family: 'Amatic SC', cursive;
+  background-color: rgb(66, 66, 66);
+  justify-content: center;
+  margin-bottom: 2px;
+  font-size: x-large;
+}
+
+button {
+  border-radius: 6px;
+  border: none;
+  background-color:rgb(66, 66, 66);
+  text-decoration: underline;
+  height: 100%;
+  width:100px;
+  align-items: center;
+  color: #bee3db;
+  font-family: 'Amatic SC', cursive;
+  font-size: larger;
+}
+
+.title{
+  font-size:40px;
+  margin-left: 40px;
+}
+
+.addedHeros{
+  font-family: 'Amatic SC', cursive;
+  font-size: 25px;
+  line-height: 2em;
+}
+
+.login_card {
+  height: 400px;
+  width:500px;
+  background-color:#bee3db;
+  margin-left: 470px;
+  margin-top:100px;
+  border-radius: 6px;
+  font-family: 'Amatic SC', cursive;
+}
+
+.welcome_message{
+  font-size: xx-large;
+  margin-left: 130px;
+}
+
+.login_register_toggle{
+  display: flex;
+  font-size: large;
+  margin-left: 150px;
+  text-decoration: underline;
+  position: absolute;
+  top:280px;
+  left:550px
+}
+
+.login_registerBtn{
+  height: 30px;
+  margin-left: 200px;
+  margin-top: 120px;
+}
+
+.login_text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.register_text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 100px;
+}
+
+.editBtn{
+  margin-left:1000px;
+  margin-top: 200px;
+  height: 30px;
+}
+
+body{
+  background-color: rgb(66, 66, 66);
+}
+
+.saveHero{
+  height: 30px;
+  margin-left: 400px;
+  margin-top: 80px;
 }

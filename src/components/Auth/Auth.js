@@ -25,10 +25,11 @@ const Auth = () => {
     }
 
     return (
-        <div> 
-            <h1> Welcome to Hero Chalk Up! {register ? 'Register' : "Login"}</h1>
+        <div className='login_card'> 
+        <h1 className='login_register_toggle'>  {register ? 'Register' : "Login"}</h1>
+        <h2 className='welcome_message'>Welcome to Hero Chalk Up!</h2>
             {register ? (
-                <div>
+                <div className='login_text'>
                     <form onSubmit={e => handleAuth(e)}>
                     <input placeholder='username' onChange = {e => setUsername(e.target.value)} value={username}/>
                     <input placeholder='password' onChange = {e => setPassword(e.target.value)} value={password}/>
@@ -36,7 +37,7 @@ const Auth = () => {
                 </form>
                 </div>
             ) : (
-                <div>
+                <div className='register_text'>
                 <form onSubmit={e => handleAuth(e)}>
                     <input placeholder='username' onChange = {e => setUsername(e.target.value)} value={username}/>
                     <input placeholder='password' onChange = {e => setPassword(e.target.value)} value={password}/>
@@ -45,7 +46,7 @@ const Auth = () => {
                 </div>
             )}
 
-            <button onClick={() => setRegister(!register)}>{register ? 'Login' : "Register"}</button>
+            <button className='login_registerBtn' onClick={() => setRegister(!register)}>{register ? 'Login' : "Register"}</button>
         </div>
     )
 }

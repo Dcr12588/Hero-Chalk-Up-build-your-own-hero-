@@ -1,0 +1,8 @@
+.Ability_Card {
+   background-color: #bee3db;
+   border: solid rgb(69, 67, 67) 4px;
+   display: inline-flex;
+   height: 100%;
+   width: 100%;
+   line-height: 100%;
+}

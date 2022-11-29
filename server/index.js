@@ -34,7 +34,7 @@ app.post('/register', register)
 app.post('/login', login)
 
 app.post('/Heros/:userId', addHero)
-app.put('/Heros', editHero)
+app.put('/Heros/:id', editHero)
 app.get('/Heros', getAllHeros)
 
 // This will reset and reseed your db ===>{force: true}

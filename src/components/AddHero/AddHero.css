@@ -1,4 +1,34 @@
-.build_hero {
-    display: flex;
-    justify-content: space-between ;
+
+
+ .addForm{
+   color:#bee3db ;
+   border: none;
+   border-radius: 6px;
+   margin-top: 200px;
+   margin-left: 45px;
+}
+
+.buildBtn{
+    position: absolute;
+    top: 50%;
+    left: 48%;
+    height: 30px;
+    background-color: #bee3db;
+    color: rgb(66, 66, 66);
+}
+
+.build_hero_message{
+    position: absolute;
+    top: 18%;
+    left: 45%;
+    font-family: 'Amatic SC', cursive;
+    font-size: 45px;
+}
+
+.let{
+    font-family: 'Amatic SC', cursive;
+    font-size: x-large;
+    position: absolute;
+    top: 32%;
+    left: 39%;
 }
