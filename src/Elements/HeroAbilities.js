@@ -55,6 +55,15 @@ const HeroAbilities = ({Hero, getAllHeros,myHeros}) => {
         .then(res => console.log(res.data))
         .catch(err => console.log(err)) 
     }
+    const deleteHero = () => {
+        axios.delete(`/myHeros/${authCtx.userId}`, {
+            headers: {
+                authorization: authCtx.token
+            }
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err)) 
+    }
 
     console.log(Hero)
     return (
@@ -71,7 +80,7 @@ const HeroAbilities = ({Hero, getAllHeros,myHeros}) => {
             <p>PowerSupply: {Hero.PowerSupply}</p>
             <p>CombatAbility: {Hero.CombatAbility}</p>
             <p>SpecialAbility: {Hero.SpecialAbility}</p>
-            {myHeros ? (<button className='removeBtn'>Remove</button>) : (<button className='saveBtn'onClick={() => saveToMyHeros()}> Save Hero </button>)}
+            {myHeros ? (<button className='removeBtn' onClick={() => deleteHero()}>Remove</button>) : (<button className='saveBtn'onClick={() => saveToMyHeros()}> Save Hero </button>)}
             </div>
         ) : (
             <form onSubmit ={e => updateAbilities(e)}>

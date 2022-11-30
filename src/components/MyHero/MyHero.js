@@ -23,6 +23,21 @@ const MyHero = () => {
     }
 
     useEffect(getMyHeros, [])
+
+    const deleteHero = () => {
+        console.log(authCtx)
+        axios.delete(`/myHeros/${authCtx.userId}`, {
+            headers: {
+                authorization: authCtx.token
+            }
+        })
+        .then(res => {
+            console.log(res.data)
+            setMyHeros(res.data)
+        })
+    }
+
+    useEffect(deleteHero, [])
     return (
         <div>
             {myHeros.map(Hero => {

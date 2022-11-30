@@ -85,21 +85,13 @@ module.exports = {
     },
     deleteHero: async (req, res) => {
         try {
-            const { Strength, Speed, IQ,
-                Durability, Skill, Weapon,
-                PowerSupply, CombatAbility, SpecialAbility, HeroId } = req.body
-
-            await Hero.delete({
-                Strength, Speed, IQ,
-                Durability, Skill, Weapon,
-                PowerSupply, CombatAbility, SpecialAbility
-            }, { where: { id: +HeroId } })
-
+            const { userId, HeroId } = req.body
+            await SavedHero.destroy({UserId: +userId, HeroId})
             res.sendStatus(200)
-
         } catch (err) {
             console.log(err)
             res.sendStatus(500)
         }
+        
 }
 }
