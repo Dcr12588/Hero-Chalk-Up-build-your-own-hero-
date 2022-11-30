@@ -11,8 +11,8 @@ const Header = () => {
             Hero Chalk Up
             </div>
             <nav>
-            <NavLink className='homeBtn' to ="/"> Home  </NavLink>
             <NavLink className='loginBtn' to ="/auth"> login/register </NavLink>
+            <NavLink className='homeBtn' to ="/"> Home  </NavLink>
             <NavLink className='addHeroBtn' to ="/addhero"> Add Hero </NavLink>
             <NavLink className='myHeroBtn' to ="/myhero"> My Hero </NavLink>
             </nav>

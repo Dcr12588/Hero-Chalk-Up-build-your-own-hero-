@@ -5,6 +5,7 @@ import './AddHero.css'
 
 const AddHero = () => {
 
+
     const authCtx = useContext(AuthContext)
 
     const [Strength, setStrength] = useState('')
@@ -23,7 +24,11 @@ const AddHero = () => {
             Durability, Skill, Weapon,
             PowerSupply, CombatAbility, SpecialAbility }
 
-            axios.post(`/Heros/${authCtx.userId}`, body)
+            axios.post(`/Heros/${authCtx.userId}`, body, {
+                headers: {
+                    authorization: authCtx.token
+                }
+            })
             .then(res => console.log(res.data))
             .catch(err => console.log(err))
     }

@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, {useState, useContext} from 'react';
 import './HeroAbility.css';
 import axios from 'axios';
 import {useParams} from 'react-router-dom';
+import AuthContext from '../store/authContext';
 
 
 
+const HeroAbilities = ({Hero, getAllHeros,myHeros}) => {
 
-const HeroAbilities = ({Hero}) => {
+    const authCtx = useContext(AuthContext)
+
     const [edit, setEdit] = useState(false)
 
 
@@ -30,15 +33,29 @@ const HeroAbilities = ({Hero}) => {
             Strength, Speed, IQ,
             Durability, Skill, Weapon,
             PowerSupply, CombatAbility, 
-            SpecialAbility, id: Hero.id
+            SpecialAbility, HeroId: Hero.id
         }
         
-        axios.put(`/Heros/${id}`, body)
-        .then(res => console.log(res.data))
+        axios.put(`/Heros/${id}`, body, {
+            headers: {
+                authorization: authCtx.token
+            }
+        })
+        .then(res =>{setEdit(false)
+        getAllHeros()})
         .catch(err => console.log(err))
     }
 
-  
+    const saveToMyHeros = () => {
+        axios.post(`/myHeros`, {userId: authCtx.userId, HeroId: Hero.id}, {
+            headers: {
+                authorization: authCtx.token
+            }
+        })
+        .then(res => console.log(res.data))
+        .catch(err => console.log(err)) 
+    }
+
     console.log(Hero)
     return (
         <div className='Ability_Card'>
@@ -54,6 +71,7 @@ const HeroAbilities = ({Hero}) => {
             <p>PowerSupply: {Hero.PowerSupply}</p>
             <p>CombatAbility: {Hero.CombatAbility}</p>
             <p>SpecialAbility: {Hero.SpecialAbility}</p>
+            {myHeros ? (<button className='removeBtn'>Remove</button>) : (<button className='saveBtn'onClick={() => saveToMyHeros()}> Save Hero </button>)}
             </div>
         ) : (
             <form onSubmit ={e => updateAbilities(e)}>
@@ -67,13 +85,14 @@ const HeroAbilities = ({Hero}) => {
                 <input placeholder='CombatAbility' type='text' onChange={e => setCombatAbility(e.target.value)} value={CombatAbility}></input>
                 <input placeholder='SpecialAbility' type='text' onChange={e => setSpecialAbility(e.target.value)} value={SpecialAbility}></input>
 
-                <button className='saveHero'> Save Abilities</button>
+                <button className='saveHero'> Save Abilities</button> 
             </form>
         ) }
 
             
+                <button className='editBtn' onClick={() => setEdit(!edit)}>{edit ? 'Cancel Edit' : 'Edit Abilities'}</button>
+            
 
-            <button className='editBtn' onClick={() => setEdit(!edit)}>{edit ? 'Cancel Edit' : 'Edit Abilities'}</button>
         </div>
     )
 }

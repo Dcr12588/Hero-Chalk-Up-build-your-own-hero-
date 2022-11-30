@@ -17,14 +17,14 @@ const calculateRemainingTime = (exp) => {
 }
 
 const getLocalData = () => {
-    const storedToken = localStorage.getItem('Token')
-    const storedExp = localStorage.getItem('Exp')
-    const storedUserId = localStorage.getItem('UserId')
-    const storedUsername = localStorage.getItem('Username')
+    const storedToken = localStorage.getItem('token')
+    const storedExp = localStorage.getItem('exp')
+    const storedUserId = localStorage.getItem('userId')
+    const storedUsername = localStorage.getItem('username')
 
     const remainingTime = calculateRemainingTime(storedExp)
-    
-if (remainingTime >= 1000 * 60 * 30){
+    if (remainingTime <= 1000 * 60 * 30){
+        console.log(remainingTime)
         localStorage.removeItem('token')
         localStorage.removeItem('expTime')
         localStorage.removeItem('userId')
@@ -48,8 +48,8 @@ export const AuthContextProvider = (props) => {
     let initialUsername
 if(localData){
     initialToken = localData.token
-    initialUserId = localData.userId
-    initialUsername = localData.username
+    initialUserId = localData.UserId
+    initialUsername = localData.Username
 }
 
     const [userId, setUserId] = useState(initialUserId)
@@ -57,6 +57,7 @@ if(localData){
     const [username, setUsername] = useState(initialUsername)
 
     const logout = useCallback(() => {
+        console.log('hit useeffect')
         setUserId(null)
         setToken(null)
         setUsername(null)
@@ -75,19 +76,20 @@ if(localData){
         setUserId(+userId)
         setToken(token)
         setUsername(username)
-
+        console.log(token,exp,username,userId)
         localStorage.setItem('token', token)
         localStorage.setItem('userId', +userId)
         localStorage.setItem('username', username)
         localStorage.setItem('exp', exp)
-
+        console.log(localStorage.getItem('token'))
         const remainingTime = calculateRemainingTime(exp)
-
+        
         logoutTimer = setTimeout(logout, remainingTime)
     }
 
     useEffect(() => {
         if(localData) {
+            console.log(localData.duration)
             logoutTimer = setTimeout(logout,localData.duration)
         }
     })
@@ -107,3 +109,5 @@ if(localData){
 }
 
 export default AuthContext;
+
+

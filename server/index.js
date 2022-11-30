@@ -27,15 +27,19 @@ SavedHero.belongsTo(Hero)
 
 const {register, login} = require('./controllers/authCtrl')
 const {isAuthenticated} = require('./middleware/isAuthorized')
-const {addHero, editHero, getAllHeros} = require('./controllers/HerosCtrl')
+const {addHero, editHero, getAllHeros, addToMyHeros, getMyHeros, deleteHero} = require('./controllers/HerosCtrl')
 
 //user endpoints
 app.post('/register', register)
 app.post('/login', login)
 
-app.post('/Heros/:userId', addHero)
-app.put('/Heros/:id', editHero)
-app.get('/Heros', getAllHeros)
+app.post('/Heros/:userId',isAuthenticated, addHero)
+app.put('/Heros/:id',isAuthenticated, editHero)
+app.get('/Heros',isAuthenticated, getAllHeros)
+
+app.post('/myHeros',isAuthenticated, addToMyHeros)
+app.get('/myHeros/:userId',isAuthenticated, getMyHeros)
+app.delete('/myHeros',isAuthenticated, deleteHero)
 
 // This will reset and reseed your db ===>{force: true}
 sequelize.sync()

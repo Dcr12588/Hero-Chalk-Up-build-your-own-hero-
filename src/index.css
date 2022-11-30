@@ -15,7 +15,7 @@ code {
 .nav {
   display: flex;
   justify-content: center;
-  justify-content: space-between;
+  justify-content:space-between;
   align-items: center;
   flex-direction: row;
   background-color: #bee3db ;
@@ -79,6 +79,17 @@ button {
   color: #bee3db;
   font-family: 'Amatic SC', cursive;
   font-size: larger;
+}
+
+.saveBtn{
+  height: 30px;
+  font-size: large;
+  margin-left: 30px;
+}
+
+.removeBtn{
+  height: 30px;
+  font-size: large;
 }
 
 .title{
