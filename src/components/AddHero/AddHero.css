@@ -4,8 +4,8 @@
    color:#bee3db ;
    border: none;
    border-radius: 6px;
-   margin-top: 200px;
-   margin-left: 45px;
+   margin-top: 250px;
+   margin-left: 110px;
 }
 
 .buildBtn{
@@ -20,7 +20,7 @@
 .build_hero_message{
     position: absolute;
     top: 18%;
-    left: 45%;
+    left: 43%;
     font-family: 'Amatic SC', cursive;
     font-size: 45px;
 }
@@ -30,5 +30,5 @@
     font-size: x-large;
     position: absolute;
     top: 32%;
-    left: 39%;
+    left: 37%;
 }

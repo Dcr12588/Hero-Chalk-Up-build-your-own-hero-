@@ -39,7 +39,7 @@ app.get('/Heros',isAuthenticated, getAllHeros)
 
 app.post('/myHeros',isAuthenticated, addToMyHeros)
 app.get('/myHeros/:userId',isAuthenticated, getMyHeros)
-app.delete('/myHeros/:userId',isAuthenticated, deleteHero)
+app.delete('/myHeros/:userId/:HeroId',isAuthenticated, deleteHero)
 
 // This will reset and reseed your db ===>{force: true}
 sequelize.sync()

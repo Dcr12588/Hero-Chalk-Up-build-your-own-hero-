@@ -42,6 +42,7 @@ module.exports = {
             console.log(err)
             res.sendStatus(500)
         }
+        
     },
     getAllHeros: async (req, res) => {
         try {
@@ -85,13 +86,38 @@ module.exports = {
     },
     deleteHero: async (req, res) => {
         try {
-            const { userId, HeroId } = req.body
-            await SavedHero.destroy({UserId: +userId, HeroId})
-            res.sendStatus(200)
+            // const { Strength, Speed, IQ,
+            //     Durability, Skill, Weapon,
+            //     PowerSupply, CombatAbility, SpecialAbility } = req.body
+
+            const { userId, HeroId } = req.params
+
+            await SavedHero.destroy({where:{HeroId: +HeroId,UserId: userId
+            }})
+
+
         } catch (err) {
             console.log(err)
             res.sendStatus(500)
         }
-        
-}
+        try {
+            const {userId} = req.params
+            const savedHeros = await SavedHero.findAll({
+                where: { UserId: userId },
+                include:[{ 
+                    model: Hero,
+                    require: true,
+                    include: {
+                        model: User,
+                        require: true,
+                        attributes: ["username"]
+                }
+            }]
+            })
+            res.status(200).send(savedHeros)
+        } catch (err) {
+            console.log(err)
+            res.sendStatus(500)
+        }
+    },
 }

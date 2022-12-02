@@ -6,7 +6,7 @@ import AuthContext from '../store/authContext';
 
 
 
-const HeroAbilities = ({Hero, getAllHeros,myHeros}) => {
+const HeroAbilities = ({Hero, getAllHeros,myHeros,setMyHeros}) => {
 
     const authCtx = useContext(AuthContext)
 
@@ -56,12 +56,12 @@ const HeroAbilities = ({Hero, getAllHeros,myHeros}) => {
         .catch(err => console.log(err)) 
     }
     const deleteHero = () => {
-        axios.delete(`/myHeros/${authCtx.userId}`, {
+        axios.delete(`/myHeros/${authCtx.userId}/${Hero.id}`, {
             headers: {
                 authorization: authCtx.token
             }
         })
-        .then(res => console.log(res.data))
+        .then(res => setMyHeros(res.data))
         .catch(err => console.log(err)) 
     }
 

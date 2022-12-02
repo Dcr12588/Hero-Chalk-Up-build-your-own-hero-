@@ -10,12 +10,14 @@ const Header = () => {
             <div className='title'>
             Hero Chalk Up
             </div>
+            <div className='links'>
             <nav>
             <NavLink className='loginBtn' to ="/auth"> login/register </NavLink>
             <NavLink className='homeBtn' to ="/"> Home  </NavLink>
             <NavLink className='addHeroBtn' to ="/addhero"> Add Hero </NavLink>
             <NavLink className='myHeroBtn' to ="/myhero"> My Hero </NavLink>
             </nav>
+            </div>
             <button className='logoutBtn' onClick= {() => authCtx.logout()}>Logout</button>
         </div>
     )

@@ -24,7 +24,7 @@ const MyHero = () => {
 
     useEffect(getMyHeros, [])
 
-    const deleteHero = () => {
+    const deleteHero = (HeroId) => {
         console.log(authCtx)
         axios.delete(`/myHeros/${authCtx.userId}`, {
             headers: {
@@ -42,7 +42,7 @@ const MyHero = () => {
         <div>
             {myHeros.map(Hero => {
                 return (
-                    <HeroAbilities Hero={Hero.Hero} myHeros={true}/>
+                    <HeroAbilities Hero={Hero.Hero} myHeros={true} setMyHeros={setMyHeros}/>
                 )
             })}
         </div>

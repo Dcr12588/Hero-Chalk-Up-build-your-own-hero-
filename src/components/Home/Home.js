@@ -21,6 +21,8 @@ const Home = () => {
     useEffect(getAllHeros, [])
     return(
         <div>
+            <p className='build_hero_message'>Build Your Hero!</p>
+                <p className='let'>Marvel? Anime? Let your favorite characters become ONE!</p>
             {heros.map(Hero => {
                 return <HeroAbilities key={Hero.id}
                 Hero={Hero} getAllHeros={getAllHeros}/>
